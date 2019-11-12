@@ -1,3 +1,4 @@
+//Misc
 var renderer = null;
 var scene = null;
 var camera = null;
@@ -6,11 +7,18 @@ var bikes_group = null;
 var group = null;
 var animator = null;
 
+//Lights
 var directionalLight = null;
 var spotLight = null;
 var ambientLight = null;
+
+//Environment
 var mapUrl = "../images/checker_large.gif";
 var SHADOW_MAP_WIDTH = 2048, SHADOW_MAP_HEIGHT = 2048;
+
+//Models
+var light_bike_url = "../models/Light_Cycle/HQ_Movie\ cycle.mtl";
+var tron_bike = null;
 
 function createScene(canvas) {
     // Create the Three.js renderer and attach it to our canvas
@@ -56,6 +64,9 @@ function createScene(canvas) {
 
     mesh.rotation.x = -Math.PI / 2;
     mesh.position.y = -4.02;
+
+    // Import light bike mtl
+    loadBikeMTL();
     
     // Add the mesh to our group
     group.add( mesh );
@@ -74,5 +85,24 @@ function run() {
     KF.update();
 }
 
+function loadBikeMTL() {
 
+    /*var mtlLoader = new THREE.MTLLoader();
+    mtlLoader.setBaseUrl( '../models/Light_Cycle/' );
+    mtlLoader.setPath( '../models/Light_Cycle/' );
+    var url = "HQ_Movie\ cycle.obj.mtl";
+    mtlLoader.load( url, function( materials ) {
 
+        materials.preload();
+
+        var objLoader = new THREE.OBJLoader();
+        objLoader.setMaterials( materials );
+        objLoader.setPath( '../models/Light_Cycle/' );
+        objLoader.load( 'HQ_Movie\ cycle.obj.obj', function ( object ) {
+
+            object.position.y = - 95;
+            scene.add( object );
+
+        }, onProgress, onError );
+    });*/
+}
