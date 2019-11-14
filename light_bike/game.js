@@ -13,7 +13,7 @@ var spotLight = null;
 var ambientLight = null;
 
 //Environment
-var mapUrl = "../images/checker_large.gif";
+var mapUrl = "../images/grid.png";
 var SHADOW_MAP_WIDTH = 2048, SHADOW_MAP_HEIGHT = 2048;
 
 //Models
@@ -42,6 +42,9 @@ function createScene(canvas) {
         
     // Create a group to hold all the objects
     root = new THREE.Object3D;
+
+    var directionalLight = new THREE.DirectionalLight( 0xffffff, 1.0 );
+    scene.add( directionalLight );
 
     ambientLight = new THREE.AmbientLight ( 0x888888 );
     root.add(ambientLight);
@@ -89,7 +92,7 @@ function loadBikeMTL() {
 
     var mtlLoader = new THREE.MTLLoader();
   
-    mtlLoader.load( '../models/classicTron/classic-1982-tron-light-cycle-blue.mtl', function( materials ) {
+    mtlLoader.load( '../models/classicTronGreen/classic-1982-tron-light-cycle-green.mtl', function( materials ) {
 
         console.log("loading mtl");
         materials.preload();
@@ -97,13 +100,39 @@ function loadBikeMTL() {
         var objLoader = new THREE.OBJLoader();
         objLoader.setMaterials( materials );
 
-        objLoader.load('../models/classicTron/classic-1982-tron-light-cycle-blue.obj', function ( object ) {
+        objLoader.load('../models/classicTronGreen/classic-1982-tron-light-cycle-green.obj', function ( object ) {
             console.log("loading obj");
 
-            object.position.y = 10;
-            object.scale.set(30, 30, 30);
-            object.rotation.y = Math.PI/4;
-            scene.add( object );
+            player1 = object;
+
+            player1.position.y = 5;
+            player1.position.x = -5;
+            player1.scale.set(20, 20, 20);
+            player1.rotation.y = Math.PI/4;
+            scene.add( player1 );
         });
     });
+
+    var mtlLoader2 = new THREE.MTLLoader();
+
+    mtlLoader2.load( '../models/classicTronBlue/classic-1982-tron-light-cycle-blue.mtl', function( materials ) {
+
+        console.log("loading mtl");
+        materials.preload();
+
+        var objLoader = new THREE.OBJLoader();
+        objLoader.setMaterials( materials );
+
+        objLoader.load('../models/classicTronBlue/classic-1982-tron-light-cycle-blue.obj', function ( object ) {
+            console.log("loading obj");
+
+            player2 = object;
+
+            player2.position.y = 5;
+            player2.position.x = 5;
+            player2.scale.set(20, 20, 20);
+            player2.rotation.y = Math.PI/4;
+            scene.add( player2 );
+        });
+    });    
 }
