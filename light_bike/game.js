@@ -87,22 +87,23 @@ function run() {
 
 function loadBikeMTL() {
 
-    /*var mtlLoader = new THREE.MTLLoader();
-    mtlLoader.setBaseUrl( '../models/Light_Cycle/' );
-    mtlLoader.setPath( '../models/Light_Cycle/' );
-    var url = "HQ_Movie\ cycle.obj.mtl";
-    mtlLoader.load( url, function( materials ) {
+    var mtlLoader = new THREE.MTLLoader();
+  
+    mtlLoader.load( '../models/classicTron/classic-1982-tron-light-cycle-blue.mtl', function( materials ) {
 
+        console.log("loading mtl");
         materials.preload();
 
         var objLoader = new THREE.OBJLoader();
         objLoader.setMaterials( materials );
-        objLoader.setPath( '../models/Light_Cycle/' );
-        objLoader.load( 'HQ_Movie\ cycle.obj.obj', function ( object ) {
 
-            object.position.y = - 95;
+        objLoader.load('../models/classicTron/classic-1982-tron-light-cycle-blue.obj', function ( object ) {
+            console.log("loading obj");
+
+            object.position.y = 10;
+            object.scale.set(30, 30, 30);
+            object.rotation.y = Math.PI/4;
             scene.add( object );
-
-        }, onProgress, onError );
-    });*/
+        });
+    });
 }
