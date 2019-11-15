@@ -20,6 +20,7 @@ function createScene(canvas) {
     
     camera = new THREE.PerspectiveCamera(45, canvas.width / canvas.height, 1, 4000);
     camera_control = new THREE.OrbitControls(camera, canvas);
+    camera.position.y = 10;
     camera.position.z = 10;
     camera_control.update();
     scene.add(camera);
@@ -38,6 +39,21 @@ function createScene(canvas) {
     root.add(group);
     //root.add(bike_group);
 
+    // Import light bike mtl
+    loadBikeMTL();
+    
+    // Create planes and add it to the group
+    planeMeshGroup = createPlanes();
+
+    group.add( planeMeshGroup );
+    planeMeshGroup.castShadow = false;
+    planeMeshGroup.receiveShadow = true;
+    
+    // Now add the group to our scene
+    scene.add( root );
+}
+
+function createPlanes() {
     // Create a texture map
     var map = new THREE.TextureLoader().load(mapUrl);
     map.wrapS = map.wrapT = THREE.RepeatWrapping;
@@ -46,21 +62,12 @@ function createScene(canvas) {
     var color = 0xffffff;
 
     // Put in a ground plane to show off the lighting
-    geometry = new THREE.PlaneGeometry(200, 200, 50, 50);
+    var geometry = new THREE.PlaneGeometry(200, 200, 100, 100);
     var mesh = new THREE.Mesh(geometry, new THREE.MeshPhongMaterial({color:color, map:map, side:THREE.DoubleSide}));
 
     mesh.rotation.x = -Math.PI / 2;
     mesh.position.y = -4.02;
 
-    // Import light bike mtl
-    loadBikeMTL();
-    
-    // Add the mesh to our group
-    group.add( mesh );
-    mesh.castShadow = false;
-    mesh.receiveShadow = true;
-    
-    // Now add the group to our scene
-    scene.add( root );
+    return mesh;
 }
 

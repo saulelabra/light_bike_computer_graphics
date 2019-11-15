@@ -15,6 +15,7 @@ var ambientLight = null;
 //Environment
 var mapUrl = "../images/grid.png";
 var SHADOW_MAP_WIDTH = 2048, SHADOW_MAP_HEIGHT = 2048;
+var planeMeshGroup = null;
 
 //Models
 var light_bike_url = "../models/Light_Cycle/HQ_Movie\ cycle.mtl";
