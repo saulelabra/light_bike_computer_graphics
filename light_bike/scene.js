@@ -64,7 +64,7 @@ function createPlanes() {
     // Create texture map for ramps
     var ramp_map = new THREE.TextureLoader().load(mapUrl);
     ramp_map.wrapS = ramp_map.wrapT = THREE.RepeatWrapping;
-    ramp_map.repeat.set(20, 20);
+    ramp_map.repeat.set(3.5, 3.5);
 
     var color = 0xffffff;
 
@@ -76,15 +76,16 @@ function createPlanes() {
     plane1.rotation.x = -Math.PI / 2;
 
     //Ramp 1
-    var ramp_geometry_1 = new THREE.PlaneGeometry(20, 20, 100, 100);
+    var ramp_geometry_1 = new THREE.PlaneGeometry(32, 32, 100, 100);
     var ramp1 = new THREE.Mesh(ramp_geometry_1, new THREE.MeshPhongMaterial({color:color, map:ramp_map, side:THREE.DoubleSide}));
     ramp1.rotation.x = -Math.PI / 2.5;
+    ramp1.position.y = 5;
 
     //Level 2
     var plane_geometry_2 = new THREE.PlaneGeometry(200, 200, 100, 100);
     var plane2 = new THREE.Mesh(plane_geometry_2, new THREE.MeshPhongMaterial({color:color, map:plane_map, side:THREE.DoubleSide}));
     plane2.rotation.x = -Math.PI / 2;
-    plane2.position.y = 10;
+    plane2.position.y = 9.8;
 
     //Level 3
     var plane_geometry_3 = new THREE.PlaneGeometry(200, 200, 100, 100);
