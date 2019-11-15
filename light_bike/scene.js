@@ -14,10 +14,16 @@ function createScene(canvas) {
     scene = new THREE.Scene();
 
     // Add  a camera so we can view the scene
-    camera = new THREE.PerspectiveCamera( 45, canvas.width / canvas.height, 1, 4000 );
-    camera.position.set(0, 15, 120);
+    //camera = new THREE.PerspectiveCamera( 45, canvas.width / canvas.height, 1, 4000 );
+    //camera.position.set(0, 15, 120);
+    //scene.add(camera);
+    
+    camera = new THREE.PerspectiveCamera(45, canvas.width / canvas.height, 1, 4000);
+    camera_control = new THREE.OrbitControls(camera, canvas);
+    camera.position.z = 10;
+    camera_control.update();
     scene.add(camera);
-        
+
     // Create a group to hold all the objects
     root = new THREE.Object3D;
 
