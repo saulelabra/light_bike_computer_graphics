@@ -51,38 +51,51 @@ function createScene(canvas) {
     
     // Now add the group to our scene
     scene.add( root );
+
+    setStart();
 }
 
 function createPlanes() {
-    // Create a texture map
-    var map = new THREE.TextureLoader().load(mapUrl);
-    map.wrapS = map.wrapT = THREE.RepeatWrapping;
-    map.repeat.set(8, 8);
+    // Create a texture map for planes
+    var plane_map = new THREE.TextureLoader().load(mapUrl);
+    plane_map.wrapS = plane_map.wrapT = THREE.RepeatWrapping;
+    plane_map.repeat.set(20, 20);
+
+    // Create texture map for ramps
+    var ramp_map = new THREE.TextureLoader().load(mapUrl);
+    ramp_map.wrapS = ramp_map.wrapT = THREE.RepeatWrapping;
+    ramp_map.repeat.set(20, 20);
 
     var color = 0xffffff;
 
     var planesGroup = new THREE.Object3D;
 
     // Level 1
-    var geometry1 = new THREE.PlaneGeometry(200, 200, 100, 100);
-    var mesh1 = new THREE.Mesh(geometry1, new THREE.MeshPhongMaterial({color:color, map:map, side:THREE.DoubleSide}));
-    mesh1.rotation.x = -Math.PI / 2;
+    var plane_geometry_1 = new THREE.PlaneGeometry(200, 200, 100, 100);
+    var plane1 = new THREE.Mesh(plane_geometry_1, new THREE.MeshPhongMaterial({color:color, map:plane_map, side:THREE.DoubleSide}));
+    plane1.rotation.x = -Math.PI / 2;
+
+    //Ramp 1
+    var ramp_geometry_1 = new THREE.PlaneGeometry(20, 20, 100, 100);
+    var ramp1 = new THREE.Mesh(ramp_geometry_1, new THREE.MeshPhongMaterial({color:color, map:ramp_map, side:THREE.DoubleSide}));
+    ramp1.rotation.x = -Math.PI / 2.5;
 
     //Level 2
-    var geometry2 = new THREE.PlaneGeometry(200, 200, 100, 100);
-    var mesh2 = new THREE.Mesh(geometry2, new THREE.MeshPhongMaterial({color:color, map:map, side:THREE.DoubleSide}));
-    mesh2.rotation.x = -Math.PI / 2;
-    mesh2.position.y = 10;
+    var plane_geometry_2 = new THREE.PlaneGeometry(200, 200, 100, 100);
+    var plane2 = new THREE.Mesh(plane_geometry_2, new THREE.MeshPhongMaterial({color:color, map:plane_map, side:THREE.DoubleSide}));
+    plane2.rotation.x = -Math.PI / 2;
+    plane2.position.y = 10;
 
     //Level 3
-    var geometry3 = new THREE.PlaneGeometry(200, 200, 100, 100);
-    var mesh3 = new THREE.Mesh(geometry3, new THREE.MeshPhongMaterial({color:color, map:map, side:THREE.DoubleSide}));
-    mesh3.rotation.x = -Math.PI / 2;
-    mesh3.position.y = 20;
+    var plane_geometry_3 = new THREE.PlaneGeometry(200, 200, 100, 100);
+    var plane3 = new THREE.Mesh(plane_geometry_3, new THREE.MeshPhongMaterial({color:color, map:plane_map, side:THREE.DoubleSide}));
+    plane3.rotation.x = -Math.PI / 2;
+    plane3.position.y = 20;
 
-    planesGroup.add(mesh1);
-    planesGroup.add(mesh2);
-    planesGroup.add(mesh3);
+    planesGroup.add(plane1);
+    planesGroup.add(ramp1);
+    planesGroup.add(plane2);
+    planesGroup.add(plane3);
 
     return planesGroup;
 }
