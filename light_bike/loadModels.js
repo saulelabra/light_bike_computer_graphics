@@ -1,4 +1,4 @@
-async function loadBikeMTL() {
+async function loadBikeMTL(scene) {
 
     var mtlLoader = new THREE.MTLLoader();
   

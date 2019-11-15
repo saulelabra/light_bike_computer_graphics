@@ -1,31 +1,56 @@
-function createScene(canvas) {
-    // Create the Three.js renderer and attach it to our canvas
-    renderer = new THREE.WebGLRenderer( { canvas: canvas, antialias: true } );
-
-    // Set the viewport size
-    renderer.setSize(window.innerWidth, window.innerHeight);
-
-    // Turn on shadows
-    renderer.shadowMap.enabled = true;
-    // Options are THREE.BasicShadowMap, THREE.PCFShadowMap, PCFSoftShadowMap
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+function createScene(canvas, container) {
     
-    // Create a new Three.js scene
+    views = [
+        {
+            left: 0,
+            bottom: 0,
+            width: 0.5,
+            height: 1.0,
+            background: new THREE.Color( 0.5, 0.5, 0.7 ),
+            eye: [ 0, 0, 0 ],
+            up: [ 0, 1, 0 ],
+            fov: 30,
+            updateCamera: function ( camera, scene ) {
+              camera.position.y = 50;
+              camera.lookAt( scene.position );
+            }
+        },
+        {
+            left: 0.5,
+            bottom: 0,
+            width: 0.5,
+            height: 1.0,
+            background: new THREE.Color( 0.7, 0.7, 0.5 ),
+            eye: [ 0, 0, 50 ],
+            up: [ 0, 1, 0 ],
+            fov: 30,
+            updateCamera: function ( camera, scene ) {
+              //camera.position.x += mouseX * 0.05;
+              //camera.position.x = Math.max( Math.min( camera.position.x, 2000 ), - 2000 );
+              camera.lookAt( scene.position );
+            }
+        }
+    ];
     scene = new THREE.Scene();
-
-    // Add  a camera so we can view the scene
-    //camera = new THREE.PerspectiveCamera( 45, canvas.width / canvas.height, 1, 4000 );
-    //camera.position.set(0, 15, 120);
-    //scene.add(camera);
     
-    camera = new THREE.PerspectiveCamera(45, canvas.width / canvas.height, 1, 4000);
-    camera_control = new THREE.OrbitControls(camera, canvas);
-    camera.position.y = 10;
-    camera.position.z = 10;
-    camera_control.update();
-    scene.add(camera);
-
-    // Create a group to hold all the objects
+    for ( var ii = 0; ii < views.length; ++ ii ) {
+        var view = views[ ii ];
+        var camera = new THREE.PerspectiveCamera( view.fov, window.innerWidth / window.innerHeight, 1, 10000 );
+        camera.position.fromArray( view.eye );
+        camera.up.fromArray( view.up );
+        view.camera = camera;
+    }
+    var light = new THREE.DirectionalLight( 0xffffff );
+    light.position.set( 0, 0, 1 );
+    scene.add( light );
+    // shadow
+    canvas.width = 128;
+    canvas.height = 128;
+    renderer = new THREE.WebGLRenderer( { antialias: true } );
+    renderer.setPixelRatio( window.devicePixelRatio );
+    //renderer.setSize( window.innerWidth, window.innerHeight );
+    container.appendChild( renderer.domElement );
+    stats = new Stats();
     root = new THREE.Object3D;
 
     var directionalLight = new THREE.DirectionalLight( 0xffffff, 1.0 );
@@ -38,9 +63,6 @@ function createScene(canvas) {
     group = new THREE.Object3D;
     root.add(group);
     //root.add(bike_group);
-
-    // Import light bike mtl
-    loadBikeMTL();
     
     // Create planes and add it to the group
     planeMeshGroup = createPlanes();
@@ -49,10 +71,14 @@ function createScene(canvas) {
     planeMeshGroup.castShadow = false;
     planeMeshGroup.receiveShadow = true;
     
+    // Import light bike mtl
+    loadBikeMTL(scene);
     // Now add the group to our scene
     scene.add( root );
 
     setStart();
+    
+    
 }
 
 function createPlanes() {
@@ -94,9 +120,9 @@ function createPlanes() {
     plane3.position.y = 20;
 
     planesGroup.add(plane1);
-    planesGroup.add(ramp1);
-    planesGroup.add(plane2);
-    planesGroup.add(plane3);
+    //planesGroup.add(ramp1);
+    //planesGroup.add(plane2);
+    //planesGroup.add(plane3);
 
     return planesGroup;
 }

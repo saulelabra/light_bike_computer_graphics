@@ -13,7 +13,8 @@
 		<script src="../libs/three.js/loaders/MTLLoader.js"></script>
 		<script src="../libs/three.js/loaders/OBJLoader.js"></script>
 		<script src="../libs/three.js/controls/OrbitControls.js"></script>
-		
+		<script src="../libs/three.js/stats.module.js"></script>
+
 		<script src="./global_vars.js"></script>
 		<script src="./loadModels.js"></script>
 		<script src="./scene.js"></script>		
@@ -26,9 +27,10 @@
         <script type="text/javascript">
 			$(document).ready(
                 function() {
-                    var canvas = document.getElementById("webglcanvas");
+					var canvas = document.getElementById("webglcanvas");
+					var container = document.getElementById("interface");
                     // create the scene
-                    createScene(canvas);
+                    createScene(canvas, container);
                     // Run the run loop
                     run();
                 }
@@ -60,7 +62,8 @@
 				<button onclick="stop();" type="button" class="btn btn-secondary pr mr-2">Pause</button>
 				<button onclick="restartButton();" type="button" class="btn btn-secondary">Restart</button>
 			</div>
+			<canvas id="webglcanvas" width=100% height=100% style="margin: 0;"%></canvas>
 		</div>
-		<canvas id="webglcanvas" width=100% height=100% style="margin: 0;"%></canvas>
+		
     </body>
 </html>
