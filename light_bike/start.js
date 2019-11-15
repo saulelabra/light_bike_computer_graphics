@@ -1,10 +1,27 @@
 
-var setStart = function(tron_bike_blue) {
-    if(tron_bike_blue != null) {
-        console.log("Entro")
-        tron_bike_blue.position.set(4,10,4);
-        tron_bike_blue.scale.set(20,20,20);
-    }
+var setStart = async function() {
+    
+    document.addEventListener("keydown", onDocumentKeyDown, false);
+    
 }
 
-console.log("No entro")
+function onDocumentKeyDown(event) {
+    var keyCode = event.which;
+    console.log("Entro");
+    if (keyCode == 65) {
+        console.log("Vuelta izq");
+        tron_bike_blue.rotateY(Math.PI/2);
+    }
+    if (keyCode == 68) {
+        console.log("Vuelta der");
+        tron_bike_blue.rotateY(-Math.PI/2);
+    }
+    if (keyCode == 74) {
+        console.log("Vuelta izq");
+        tron_bike_blue.rotateY(Math.PI/2);
+    }
+    if (keyCode == 76) {
+        console.log("Vuelta der");
+        tron_bike_blue.rotateY(-Math.PI/2);
+    }
+};

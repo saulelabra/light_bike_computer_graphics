@@ -1,6 +1,7 @@
 function run() {     
     requestAnimationFrame(function() { run(); });
 
+    moveBike(tron_bike_blue);
     moveBike(tron_bike_green);
 
 
