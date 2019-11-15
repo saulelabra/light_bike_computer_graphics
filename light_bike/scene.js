@@ -77,8 +77,6 @@ function createScene(canvas, container) {
     scene.add( root );
 
     setStart();
-    
-    
 }
 
 function createPlanes() {
@@ -90,7 +88,7 @@ function createPlanes() {
     // Create texture map for ramps
     var ramp_map = new THREE.TextureLoader().load(mapUrl);
     ramp_map.wrapS = ramp_map.wrapT = THREE.RepeatWrapping;
-    ramp_map.repeat.set(3.5, 3.5);
+    ramp_map.repeat.set(2, 2);
 
     var color = 0xffffff;
 
@@ -102,16 +100,27 @@ function createPlanes() {
     plane1.rotation.x = -Math.PI / 2;
 
     //Ramp 1
-    var ramp_geometry_1 = new THREE.PlaneGeometry(32, 32, 100, 100);
+    var ramp_geometry_1 = new THREE.PlaneGeometry(20, 20, 100, 100);
     var ramp1 = new THREE.Mesh(ramp_geometry_1, new THREE.MeshPhongMaterial({color:color, map:ramp_map, side:THREE.DoubleSide}));
-    ramp1.rotation.x = -Math.PI / 2.5;
+    ramp1.rotation.x = -Math.PI / 2 + 0.52;
     ramp1.position.y = 5;
+    ramp1.position.x = -80;
+    ramp1.position.z = -20;
+
+    //Ramp 2
+    var ramp_geometry_2 = new THREE.PlaneGeometry(20, 20, 100, 100);
+    var ramp2 = new THREE.Mesh(ramp_geometry_2, new THREE.MeshPhongMaterial({color:color, map:ramp_map, side:THREE.DoubleSide}));
+    ramp2.rotation.x = Math.PI / 2 - 0.52;
+    ramp2.position.y = 5;
+    ramp2.position.x = 80;
+    ramp2.position.z = 20;
 
     //Level 2
-    var plane_geometry_2 = new THREE.PlaneGeometry(200, 200, 100, 100);
+    var plane_geometry_2 = new THREE.PlaneGeometry(180, 102.68, 100, 100);
     var plane2 = new THREE.Mesh(plane_geometry_2, new THREE.MeshPhongMaterial({color:color, map:plane_map, side:THREE.DoubleSide}));
     plane2.rotation.x = -Math.PI / 2;
-    plane2.position.y = 9.8;
+    plane2.position.y = 10;
+    plane2.position.z = -80;
 
     //Level 3
     var plane_geometry_3 = new THREE.PlaneGeometry(200, 200, 100, 100);
@@ -120,8 +129,9 @@ function createPlanes() {
     plane3.position.y = 20;
 
     planesGroup.add(plane1);
-    //planesGroup.add(ramp1);
-    //planesGroup.add(plane2);
+    planesGroup.add(ramp1);
+    planesGroup.add(ramp2);
+    planesGroup.add(plane2);
     //planesGroup.add(plane3);
 
     return planesGroup;
