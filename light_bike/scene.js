@@ -61,13 +61,29 @@ function createPlanes() {
 
     var color = 0xffffff;
 
-    // Put in a ground plane to show off the lighting
-    var geometry = new THREE.PlaneGeometry(200, 200, 100, 100);
-    var mesh = new THREE.Mesh(geometry, new THREE.MeshPhongMaterial({color:color, map:map, side:THREE.DoubleSide}));
+    var planesGroup = new THREE.Object3D;
 
-    mesh.rotation.x = -Math.PI / 2;
-    mesh.position.y = -4.02;
+    // Level 1
+    var geometry1 = new THREE.PlaneGeometry(200, 200, 100, 100);
+    var mesh1 = new THREE.Mesh(geometry1, new THREE.MeshPhongMaterial({color:color, map:map, side:THREE.DoubleSide}));
+    mesh1.rotation.x = -Math.PI / 2;
 
-    return mesh;
+    //Level 2
+    var geometry2 = new THREE.PlaneGeometry(200, 200, 100, 100);
+    var mesh2 = new THREE.Mesh(geometry2, new THREE.MeshPhongMaterial({color:color, map:map, side:THREE.DoubleSide}));
+    mesh2.rotation.x = -Math.PI / 2;
+    mesh2.position.y = 10;
+
+    //Level 3
+    var geometry3 = new THREE.PlaneGeometry(200, 200, 100, 100);
+    var mesh3 = new THREE.Mesh(geometry3, new THREE.MeshPhongMaterial({color:color, map:map, side:THREE.DoubleSide}));
+    mesh3.rotation.x = -Math.PI / 2;
+    mesh3.position.y = 20;
+
+    planesGroup.add(mesh1);
+    planesGroup.add(mesh2);
+    planesGroup.add(mesh3);
+
+    return planesGroup;
 }
 
