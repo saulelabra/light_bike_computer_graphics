@@ -27,3 +27,10 @@ var mouseX = 0, mouseY = 0;
 var windowWidth, windowHeight;
 var views = null;
 var stats = null;
+
+//Movement
+var rotateAnim_duration = 1;
+var blueRotateAnim = new KF.KeyFrameAnimator;
+var greenRotateAnim = new KF.KeyFrameAnimator;
+var canRotate_blue = null;
+var canRotate_green = null;

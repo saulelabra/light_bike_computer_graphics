@@ -25,7 +25,7 @@ async function loadBikeMTL(scene) {
 
         objLoader.load('../models/classicTronBlue/classic-1982-tron-light-cycle-blue.obj', function ( object ) {
             tron_bike_blue = object;
-        
+            
             scene.add( tron_bike_blue );
         });
     });

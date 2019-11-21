@@ -3,6 +3,7 @@ function run() {
     moveBike(tron_bike_blue);
     moveBike(tron_bike_green);
     stats.update();
+    KF.update();
     requestAnimationFrame( run );
 }
 
