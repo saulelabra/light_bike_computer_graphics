@@ -1,8 +1,6 @@
-var moveBike = function(bike, camera) {
-    if (bike != null && camera != null) {
+var moveBike = function(bike) {
+    if (bike != null) {
         bike.translateZ(bikeSpeed);
-        camera.position.z = bike.position.z + 25;
-        camera.position.x = bike.position.x;
     }
     
 }
