@@ -1,7 +1,8 @@
 function run() {
     render();
-    moveBike(tron_bike_blue);
-    moveBike(tron_bike_green);
+    moveBike(tron_bike_blue, camera1);
+    moveBike(tron_bike_green, camera2);
+
     stats.update();
     KF.update();
     requestAnimationFrame( run );
