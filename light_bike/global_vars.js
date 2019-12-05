@@ -30,7 +30,8 @@ var views = null;
 var stats = null;
 
 //Movement
-var rotateAnim_duration = 1;
+var rotateAnim_duration = 0.5;
+var bikeSpeed = -0.05;
 var blueRotateAnim = new KF.KeyFrameAnimator;
 var greenRotateAnim = new KF.KeyFrameAnimator;
 var canRotate_blue = null;
