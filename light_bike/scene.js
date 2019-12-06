@@ -97,6 +97,12 @@ function createScene(canvas, container) {
     // Now add the group to our scene
     scene.add( root );
 
+
+//////////////////////////////////////Temporal///////////////////////////////////////////
+    var controls = new THREE.OrbitControls( camera1, renderer.domElement );
+    controls.update();
+////////////////////////////////////////////////////////////////////////////////////////
+
     setStart();
 }
 
