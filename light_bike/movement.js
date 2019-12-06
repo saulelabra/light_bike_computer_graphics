@@ -1,8 +1,26 @@
 var moveBike = function(bike) {
     if (bike != null) {
-        bike.translateZ(bikeSpeed);
-        panel = new Panel();
-        panel.createWall(bike.position);
+        if(bike.death == true)
+        {
+            deathBike(bike, bike.position.z)
+        }
+        if(bike.limits == false && count == 0)
+        {
+            BikeOffLimits(bike)
+            count++;
+        }
+        else
+        {
+            if(bike.death == false && bike.limits == true)
+            {
+                bike.translateZ(bikeSpeed);
+                panel = new Panel();
+                panel.createWall(bike.position);
+                if(bike.position.z <= -110)
+                    bike.limits = false;
+                
+            }
+        }
     }
     
 }
@@ -65,4 +83,52 @@ function rotateBike(object, direction, rotateAnim) {
     });
     rotateAnim.start();
     object.canRotate = false;
+}
+
+function deathBike(object, bike_position) {
+    //rotateAnim = new KF.KeyFrameAnimator;
+    bikeDeath.init({ 
+        interps:
+            [
+                { 
+                    keys:[0, 1], 
+                    values:[
+                        { z:0},
+                        { z:Math.PI/2}
+                    ],
+                    target:object.rotation
+                },
+                { 
+                    keys:[0, 1], 
+                    values:[
+                        { y: 0.2, z: bike_position },
+                        { y: 0.2, z: bike_position}
+                    ],
+                    target:object.position
+                }
+            ],
+        loop: false,
+        duration: rotateAnim_duration * 1000,
+    });
+    bikeDeath.start();
+}
+
+function BikeOffLimits(object) {
+    //rotateAnim = new KF.KeyFrameAnimator;
+    bikeOffLimits.init({ 
+        interps:
+            [
+                { 
+                    keys:[0, 1], 
+                    values:[
+                        { x:0},
+                        { x:-Math.PI/2}
+                    ],
+                    target:object.rotation
+                }
+            ],
+        loop: false,
+        duration: rotateAnim_duration * 1000,
+    });
+    bikeOffLimits.start();
 }

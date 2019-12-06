@@ -10,6 +10,6 @@ class Panel {
         newPlane.position.y = bikePosition.y;
         newPlane.position.z = bikePosition.z;
         scene.add( newPlane );
-        console.log("coords %j", newPlane.rotation);
+        //console.log("coords %j", newPlane.rotation);
     }
 }
