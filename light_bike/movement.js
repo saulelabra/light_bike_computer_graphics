@@ -1,6 +1,8 @@
 var moveBike = function(bike) {
     if (bike != null) {
         bike.translateZ(bikeSpeed);
+        panel = new Panel();
+        panel.createWall(bike.position);
     }
     
 }

@@ -30,9 +30,15 @@ var views = null;
 var stats = null;
 
 //Movement
-var rotateAnim_duration = 0.5;
-var bikeSpeed = -0.05;
+var rotateAnim_duration = 0.2;
+var bikeSpeed = -0.5;
 var blueRotateAnim = new KF.KeyFrameAnimator;
 var greenRotateAnim = new KF.KeyFrameAnimator;
 var canRotate_blue = null;
 var canRotate_green = null;
+
+//Trail
+var trail_width = 0.5;
+var geometry = new THREE.BoxGeometry( trail_width, 1.5, trail_width);
+var material = new THREE.MeshBasicMaterial( {color: 0xffff00, side: THREE.DoubleSide, opacity: 0.5, transparent:true} );
+var plane = new THREE.Mesh( geometry, material );
