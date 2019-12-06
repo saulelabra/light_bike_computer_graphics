@@ -6,7 +6,7 @@ var moveBike = function(bike) {
         }
         if(bike.limits == false && count == 0)
         {
-            BikeOffLimits(bike)
+            BikeOffLimits(bike, bike.position.y)
             count++;
         }
         else
@@ -16,7 +16,7 @@ var moveBike = function(bike) {
                 bike.translateZ(bikeSpeed);
                 panel = new Panel();
                 panel.createWall(bike.position);
-                if(bike.position.z <= -110)
+                if(bike.position.z <= -100 || bike.position.z >= 100)
                     bike.limits = false;
                 
             }
@@ -113,7 +113,7 @@ function deathBike(object, bike_position) {
     bikeDeath.start();
 }
 
-function BikeOffLimits(object) {
+function BikeOffLimits(object, bike_position) {
     //rotateAnim = new KF.KeyFrameAnimator;
     bikeOffLimits.init({ 
         interps:
@@ -125,6 +125,14 @@ function BikeOffLimits(object) {
                         { x:-Math.PI/2}
                     ],
                     target:object.rotation
+                },
+                { 
+                    keys:[0, 1], 
+                    values:[
+                        { y: bike_position},
+                        { y: bike_position - 5}
+                    ],
+                    target:object.position
                 }
             ],
         loop: false,
