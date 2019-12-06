@@ -1,12 +1,12 @@
 var moveBike = function(bike) {
     if (bike != null) {
         bike.translateZ(bikeSpeed);
-
     }
     
 }
 
 function onDocumentKeyDown(event) {
+    event.preventDefault();
     var keyCode = event.which;
     if (keyCode == 65 && !blueRotateAnim.running) {
         //tron_bike_blue.rotateY(Math.PI/2);
@@ -21,6 +21,26 @@ function onDocumentKeyDown(event) {
     }
     if (keyCode == 76 && !greenRotateAnim.running) {
         rotateBike(tron_bike_green, -Math.PI/2, greenRotateAnim);
+    }
+
+    if(keyCode == 38) {
+        console.log("pushed up");
+        camera1.position.z += 10;
+    }
+
+    if(keyCode == 40) {
+        console.log("pushed down");
+        camera1.position.z -= 10;
+    }
+
+    if(keyCode == 37) {
+        console.log("pushed left");
+        camera1.position.x -= 10;
+    }
+
+    if(keyCode == 39) {
+        console.log("pushed right");
+        camera1.position.x += 10;
     }
 };
 

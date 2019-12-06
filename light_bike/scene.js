@@ -7,12 +7,12 @@ function createScene(canvas, container) {
             width: 0.5,
             height: 1.0,
             background: new THREE.Color( 0.5, 0.5, 0.7 ),
-            eye: [ 0, 0, 0 ],
-            up: [ 0, 1, 0 ],
+            eye: [ 0, 0, 20 ],
+            up: [ 0, 0, 0 ],
             fov: 30,
             updateCamera: function ( camera, scene ) {
-              camera.position.y = 50;
-              camera.lookAt( scene.position );
+              camera.position.y = 4;
+              //camera.lookAt( scene.position );
             }
         },
         {
@@ -21,25 +21,42 @@ function createScene(canvas, container) {
             width: 0.5,
             height: 1.0,
             background: new THREE.Color( 0.7, 0.7, 0.5 ),
-            eye: [ 0, 0, 50 ],
-            up: [ 0, 1, 0 ],
+            eye: [ 0, 0, 20 ],
+            up: [ 0, 0, 0 ],
             fov: 30,
             updateCamera: function ( camera, scene ) {
+                camera.position.y = 4;
               //camera.position.x += mouseX * 0.05;
               //camera.position.x = Math.max( Math.min( camera.position.x, 2000 ), - 2000 );
-              camera.lookAt( scene.position );
+              //camera.lookAt( scene.position );
             }
         }
     ];
     scene = new THREE.Scene();
     
-    for ( var ii = 0; ii < views.length; ++ ii ) {
+    /*for ( var ii = 0; ii < views.length; ++ ii ) {
         var view = views[ ii ];
         var camera = new THREE.PerspectiveCamera( view.fov, window.innerWidth / window.innerHeight, 1, 10000 );
         camera.position.fromArray( view.eye );
         camera.up.fromArray( view.up );
         view.camera = camera;
-    }
+    }*/
+
+
+    var view = null;
+
+    view = views[0];
+    camera1 = new THREE.PerspectiveCamera( view.fov, window.innerWidth / window.innerHeight, 1, 10000 );
+    camera1.position.fromArray( view.eye );
+    camera1.up.fromArray( view.up );
+    view.camera = camera1;
+
+    view = views[1];
+    camera2 = new THREE.PerspectiveCamera( view.fov, window.innerWidth / window.innerHeight, 1, 10000 );
+    camera2.position.fromArray( view.eye );
+    camera2.up.fromArray( view.up );
+    view.camera = camera2;
+
     var light = new THREE.DirectionalLight( 0xffffff );
     light.position.set( 0, 0, 1 );
     scene.add( light );
@@ -71,8 +88,12 @@ function createScene(canvas, container) {
     planeMeshGroup.castShadow = false;
     planeMeshGroup.receiveShadow = true;
     
-    // Import light bike mtl
-    loadBikeMTL(scene);
+    // Import light bike obj and add it to the group with the cameras
+    loadBlueBikeMTL();
+    loadGreenBikeMTL();
+    scene.add(tron_bike_blue);
+    scene.add(tron_bike_green);
+
     // Now add the group to our scene
     scene.add( root );
 

@@ -1,7 +1,8 @@
 //Misc
 var renderer = null;
 var scene = null;
-var camera = null;
+var camera1 = null;
+var camera2 = null;
 var root = null;
 var bikes_group = null;
 var group = null;
