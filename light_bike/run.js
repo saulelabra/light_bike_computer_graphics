@@ -1,7 +1,7 @@
 function run() {
     render();
-    //moveBike(tron_bike_blue);
-    //moveBike(tron_bike_green);
+    moveBike(tron_bike_blue);
+    moveBike(tron_bike_green);
 
     stats.update();
     KF.update();
