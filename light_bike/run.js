@@ -6,6 +6,8 @@ function run() {
     stats.update();
     KF.update();
     requestAnimationFrame( run );
+
+    planeCollision = greenPlane.isIntersectionBox(bluePlane);
 }
 
 function render() {

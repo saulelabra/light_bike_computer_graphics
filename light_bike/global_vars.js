@@ -41,13 +41,20 @@ var canRotate_green = null;
 var trail_width = 0.5;
 var geometry = new THREE.BoxGeometry( trail_width, 1.5, trail_width);
 var material = new THREE.MeshBasicMaterial( {color: "#00FC0F", side: THREE.DoubleSide, opacity: 0.5, transparent:true} );
-var plane = new THREE.Mesh( geometry, material );
+var planeGreen = new THREE.Mesh( geometry, material );
 
 //Trail2 blue
 var material2 = new THREE.MeshBasicMaterial( {color: "#23F9EC", side: THREE.DoubleSide, opacity: 0.5, transparent:true} );
-var plane2 = new THREE.Mesh( geometry, material2 );
+var planeBlue = new THREE.Mesh( geometry, material2 );
 
 //Death animation
 var bikeDeath = new KF.KeyFrameAnimator;
 var bikeOffLimits = new KF.KeyFrameAnimator;
 var count = 0;
+
+//Colliders
+var greenPlane = new THREE.Box3().setFromObject(planeGreen);
+
+var bluePlane = new THREE.Box3().setFromObject(planeBlue);
+
+var planeCollision = greenPlane.isIntersectionBox(bluePlane);

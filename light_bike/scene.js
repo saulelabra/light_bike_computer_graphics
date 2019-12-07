@@ -77,8 +77,10 @@ function createScene(container) {
     // Import light bike obj and add it to the group with the cameras
     loadBlueBikeMTL();
     loadGreenBikeMTL();
-    scene.add(tron_bike_blue);
-    scene.add(tron_bike_green);
+    if (tron_bike_blue != undefined && tron_bike_green != undefined) {
+        scene.add(tron_bike_blue);
+        scene.add(tron_bike_green);
+    }
 
     // Now add the group to our scene
     scene.add( root );

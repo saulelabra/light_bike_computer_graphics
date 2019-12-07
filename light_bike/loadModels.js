@@ -16,7 +16,7 @@ async function loadGreenBikeMTL() {
             tron_bike_green.rampAnim = new KF.KeyFrameAnimator;
             tron_bike_green.up = 0;
             tron_bike_green.color = 0;
-
+            tron_bike_green.position.x +=10; 
             camera2.position.z += 10;
             tron_bike_green.position.x = -10;
             
