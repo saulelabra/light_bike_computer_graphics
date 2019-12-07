@@ -46,4 +46,4 @@ var plane = new THREE.Mesh( geometry, material );
 //Death animation
 var bikeDeath = new KF.KeyFrameAnimator;
 var bikeOffLimits = new KF.KeyFrameAnimator;
-var count =0;
+var count = 0;

@@ -13,6 +13,7 @@ async function loadGreenBikeMTL() {
             tron_bike_green.add(camera2);
             tron_bike_green.death = false;
             tron_bike_green.limits = true;
+            tron_bike_green.rampAnim = new KF.KeyFrameAnimator;
 
             camera2.position.z += 10;
             
@@ -35,6 +36,7 @@ async function loadBlueBikeMTL() {
             tron_bike_blue.add(camera1);
             tron_bike_blue.death = false;
             tron_bike_blue.limits = true;
+            tron_bike_blue.rampAnim = new KF.KeyFrameAnimator;
 
             camera1.position.z += 10;
             

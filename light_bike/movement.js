@@ -4,10 +4,10 @@ var moveBike = function(bike) {
         {
             deathBike(bike, bike.position.z)
         }
-        if(bike.limits == false && count == 0)
+        if(bike.limits == false)
         {
             BikeOffLimits(bike, bike.position.y)
-            count++;
+            //bike.death = true;
         }
         else
         {
@@ -16,8 +16,21 @@ var moveBike = function(bike) {
                 bike.translateZ(bikeSpeed);
                 panel = new Panel();
                 panel.createWall(bike.position);
-                if(bike.position.z <= -100 || bike.position.z >= 100)
-                    bike.limits = false;
+                if(bike.position.y == 0)
+                {
+                    if(bike.position.z <= -100 || bike.position.z >= 100 || bike.position.x <= -100 || bike.position.x >=100)
+                    {
+                        bike.limits = false;
+                    }
+                    else
+                    {
+                        console.log(bike.position.z)
+                        if(bike.position.z >= -11 && bike.position.x >= -90 && bike.position.z <= -10 && bike.position.x <= -70)
+                        {
+                            BikeonRamp1(bike, bike.rampAnim, bike.position);
+                        }
+                    }
+                }
                 
             }
         }
@@ -124,7 +137,7 @@ function BikeOffLimits(object, bike_position) {
                         { x:0},
                         { x:-Math.PI/2}
                     ],
-                    target:object.rotation
+                    target:object.children[0].rotation
                 },
                 { 
                     keys:[0, 1], 
@@ -132,11 +145,82 @@ function BikeOffLimits(object, bike_position) {
                         { y: bike_position},
                         { y: bike_position - 5}
                     ],
-                    target:object.position
+                    target:object.children[0].position
+                },
+
+                { 
+                    keys:[0, 1], 
+                    values:[
+                        { x:0},
+                        { x:-Math.PI/2}
+                    ],
+                    target:object.children[1].rotation
+                },
+                { 
+                    keys:[0, 1], 
+                    values:[
+                        { y: bike_position},
+                        { y: bike_position - 5}
+                    ],
+                    target:object.children[1].position
+                },
+                { 
+                    keys:[0, 1], 
+                    values:[
+                        { x:0},
+                        { x:-Math.PI/2}
+                    ],
+                    target:object.children[2].rotation
+                },
+                { 
+                    keys:[0, 1], 
+                    values:[
+                        { y: bike_position},
+                        { y: bike_position - 5}
+                    ],
+                    target:object.children[2].position
+                },
+                { 
+                    keys:[0, 1], 
+                    values:[
+                        { x:0},
+                        { x:-Math.PI/2}
+                    ],
+                    target:object.children[3].rotation
+                },
+                { 
+                    keys:[0, 1], 
+                    values:[
+                        { y: bike_position},
+                        { y: bike_position - 5}
+                    ],
+                    target:object.children[3].position
                 }
             ],
         loop: false,
         duration: rotateAnim_duration * 1000,
     });
     bikeOffLimits.start();
+}
+
+function BikeonRamp1(object, rampAnim){
+    rampAnim.init({ 
+        interps:
+            [
+                { 
+                    keys:[0, 0.25, 0.5, 0.75, 1], 
+                    values:[
+                        { y: object.position.y + 2, z: -14 },
+                        { y: object.position.y + 4, z: -18 },
+                        { y: object.position.y + 6, z: -22 },
+                        { y: object.position.y + 8, z: -26 },
+                        { y: object.position.y + 10, z: -30 }
+                    ],
+                    target:object.position
+                }
+            ],
+        loop: false,
+        duration: rotateAnim_duration * 1000,
+    });
+    rampAnim.start();
 }
