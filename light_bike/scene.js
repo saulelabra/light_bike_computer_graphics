@@ -138,9 +138,9 @@ function createPlanes() {
     var ramp_geometry_2 = new THREE.PlaneGeometry(20, 20, 100, 100);
     var ramp2 = new THREE.Mesh(ramp_geometry_2, new THREE.MeshPhongMaterial({color:color, map:ramp_map, side:THREE.DoubleSide}));
     ramp2.rotation.x = Math.PI / 2 - 0.52;
-    ramp2.position.y = 5;
+    ramp2.position.y = 15;
     ramp2.position.x = 80;
-    ramp2.position.z = 20;
+    ramp2.position.z = -20;
 
     //Level 2
     var plane_geometry_2 = new THREE.PlaneGeometry(180, 102.68, 100, 100);
@@ -150,16 +150,18 @@ function createPlanes() {
     plane2.position.z = -80;
 
     //Level 3
-    var plane_geometry_3 = new THREE.PlaneGeometry(200, 200, 100, 100);
+    var plane_geometry_3 = new THREE.PlaneGeometry(80, 102.68, 100, 100);
     var plane3 = new THREE.Mesh(plane_geometry_3, new THREE.MeshPhongMaterial({color:color, map:plane_map, side:THREE.DoubleSide}));
     plane3.rotation.x = -Math.PI / 2;
+    plane3.position.x = 50;
     plane3.position.y = 20;
+    plane3.position.z = 40;
 
     planesGroup.add(plane1);
     planesGroup.add(ramp1);
-    planesGroup.add(ramp2);
     planesGroup.add(plane2);
-    //planesGroup.add(plane3);
+    planesGroup.add(ramp2);
+    planesGroup.add(plane3);
 
     return planesGroup;
 }
