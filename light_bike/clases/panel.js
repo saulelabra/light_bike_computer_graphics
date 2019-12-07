@@ -3,9 +3,11 @@ class Panel {
         //var lineMaterial = new THREE.LineBasicMaterial({color: 0xff00ff, linewidth:2});
     }
 
-    createWall(bikePosition) {
-        var newPlane = plane.clone();
-
+    createWall(bike, bikePosition) {
+        if(bike.color == 0)
+            var newPlane = plane.clone();
+        else
+            var newPlane = plane2.clone();
         newPlane.position.x = bikePosition.x;
         newPlane.position.y = bikePosition.y;
         newPlane.position.z = bikePosition.z;

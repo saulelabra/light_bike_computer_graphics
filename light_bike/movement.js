@@ -15,7 +15,7 @@ var moveBike = function(bike) {
             {
                 bike.translateZ(bikeSpeed);
                 panel = new Panel();
-                panel.createWall(bike.position);
+                panel.createWall(bike, bike.position);
                 if(bike.position.y == 0)
                 {
                     if(bike.position.z <= -100 || bike.position.z >= 100 || bike.position.x <= -100 || bike.position.x >=100)
@@ -24,11 +24,23 @@ var moveBike = function(bike) {
                     }
                     else
                     {
-                        console.log(bike.position.z)
                         if(bike.position.z >= -11 && bike.position.x >= -90 && bike.position.z <= -10 && bike.position.x <= -70)
                         {
-                            BikeonRamp1(bike, bike.rampAnim, bike.position);
+                            BikeonRamp1(bike, bike.rampAnim);
                         }
+                    }
+                }
+                if(bike.position.y == 10)
+                {
+                    if(bike.position.z >= -31 && bike.position.x >= -90 && bike.position.z <= -30 && bike.position.x <= -70)
+                    {
+                        if(bike.up > 2) 
+                        {
+                            DownBikeonRamp1(bike, bike.rampAnim);
+                            bike.up = 0;
+                        }
+                        else
+                            bike.up++;
                     }
                 }
                 
@@ -215,6 +227,28 @@ function BikeonRamp1(object, rampAnim){
                         { y: object.position.y + 6, z: -22 },
                         { y: object.position.y + 8, z: -26 },
                         { y: object.position.y + 10, z: -30 }
+                    ],
+                    target:object.position
+                }
+            ],
+        loop: false,
+        duration: rotateAnim_duration * 1000,
+    });
+    rampAnim.start();
+}
+
+function DownBikeonRamp1(object, rampAnim){
+    rampAnim.init({ 
+        interps:
+            [
+                { 
+                    keys:[0, 0.25, 0.5, 0.75, 1], 
+                    values:[
+                        { y: object.position.y - 2, z: -26 },
+                        { y: object.position.y - 4, z: -22 },
+                        { y: object.position.y - 6, z: -18 },
+                        { y: object.position.y - 8, z: -14 },
+                        { y: object.position.y - 10, z: -10 }
                     ],
                     target:object.position
                 }

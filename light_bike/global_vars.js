@@ -37,11 +37,15 @@ var greenRotateAnim = new KF.KeyFrameAnimator;
 var canRotate_blue = null;
 var canRotate_green = null;
 
-//Trail
+//Trail green
 var trail_width = 0.5;
 var geometry = new THREE.BoxGeometry( trail_width, 1.5, trail_width);
-var material = new THREE.MeshBasicMaterial( {color: 0xffff00, side: THREE.DoubleSide, opacity: 0.5, transparent:true} );
+var material = new THREE.MeshBasicMaterial( {color: "#00FC0F", side: THREE.DoubleSide, opacity: 0.5, transparent:true} );
 var plane = new THREE.Mesh( geometry, material );
+
+//Trail2 blue
+var material2 = new THREE.MeshBasicMaterial( {color: "#23F9EC", side: THREE.DoubleSide, opacity: 0.5, transparent:true} );
+var plane2 = new THREE.Mesh( geometry, material2 );
 
 //Death animation
 var bikeDeath = new KF.KeyFrameAnimator;
