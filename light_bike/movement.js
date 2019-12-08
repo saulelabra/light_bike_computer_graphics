@@ -201,8 +201,8 @@ function BikeOffLimits(object, bike_position) {
                 { 
                     keys:[0, 1], 
                     values:[
-                        { y: bike_position},
-                        { y: bike_position - 5}
+                        { y: bike_position.y},
+                        { y: bike_position.y - 5}
                     ],
                     target:object.children[0].position
                 },
@@ -218,8 +218,8 @@ function BikeOffLimits(object, bike_position) {
                 { 
                     keys:[0, 1], 
                     values:[
-                        { y: bike_position},
-                        { y: bike_position - 5}
+                        { y: bike_position.y},
+                        { y: bike_position.y - 5}
                     ],
                     target:object.children[1].position
                 },
@@ -234,8 +234,8 @@ function BikeOffLimits(object, bike_position) {
                 { 
                     keys:[0, 1], 
                     values:[
-                        { y: bike_position},
-                        { y: bike_position - 5}
+                        { y: bike_position.y},
+                        { y: bike_position.y - 5}
                     ],
                     target:object.children[2].position
                 },
@@ -250,8 +250,8 @@ function BikeOffLimits(object, bike_position) {
                 { 
                     keys:[0, 1], 
                     values:[
-                        { y: bike_position},
-                        { y: bike_position - 5}
+                        { y: bike_position.y},
+                        { y: bike_position.y - 5}
                     ],
                     target:object.children[3].position
                 }
