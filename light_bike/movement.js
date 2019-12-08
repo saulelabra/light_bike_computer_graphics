@@ -26,9 +26,18 @@ var moveBike = function(bike) {
                         }
                         else
                         {
+                            if(bike.position.z >= -12 && bike.position.x >= -90 && bike.position.z <= -11 && bike.position.x <= -70)
+                                prev_pos = 1;
                             if(bike.position.z >= -11 && bike.position.x >= -90 && bike.position.z <= -10 && bike.position.x <= -70)
                             {
-                                BikeonRamp1(bike, bike.rampAnim);
+                                console.log(prev_pos)
+                                if(prev_pos > 0)
+                                    bike.death = true;
+                                else
+                                {
+                                    prev_pos = 0;
+                                    BikeonRamp1(bike, bike.rampAnim);
+                                }
                             }
                         }
                     }
