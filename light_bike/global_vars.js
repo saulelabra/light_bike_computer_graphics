@@ -54,3 +54,6 @@ var count = 0;
 
 //Colliders
 var arrPlaneCoords = [];
+
+//Menu
+var pause = false;

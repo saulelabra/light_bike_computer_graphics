@@ -1,13 +1,18 @@
 function run() {
-    render();
-    moveBike(tron_bike_blue);
-    moveBike(tron_bike_green);
-
-    stats.update();
-    KF.update();
     requestAnimationFrame( run );
-    checkCollision(tron_bike_blue);
-    checkCollision(tron_bike_green);
+    if(pause == false) {
+        render();
+        moveBike(tron_bike_blue);
+        moveBike(tron_bike_green);
+    
+        stats.update();
+        KF.update();
+        
+        checkCollision(tron_bike_blue);
+        checkCollision(tron_bike_green);
+    }
+    
+    
 
 //////////////////////////////////////Temporal///////////////////////////////////////////
     //controls.update();
@@ -65,4 +70,14 @@ function checkCollision(bike) {
             
         
     }
+}
+
+function stop() {
+    if(pause == false) {
+        pause = true;
+    }else{
+        pause = false;
+    }
+    
+        
 }
