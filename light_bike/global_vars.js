@@ -51,7 +51,6 @@ var planeBlue = new THREE.Mesh( geometry, material2 );
 var bikeDeath = new KF.KeyFrameAnimator;
 var bikeOffLimits = new KF.KeyFrameAnimator;
 var count = 0;
-var deathAnim = false;
 
 //Colliders
 var arrPlaneCoords = [];
