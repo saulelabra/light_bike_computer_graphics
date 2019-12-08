@@ -77,7 +77,9 @@ function stop() {
         pause = true;
     }else{
         pause = false;
-    }
+    }       
+}
+
+function restartButton() {
     
-        
 }
