@@ -30,7 +30,6 @@ var moveBike = function(bike) {
                                 prev_pos = 1;
                             if(bike.position.z >= -11 && bike.position.x >= -90 && bike.position.z <= -10 && bike.position.x <= -70)
                             {
-                                console.log(prev_pos)
                                 if(prev_pos > 0)
                                     bike.death = true;
                                 else
@@ -43,24 +42,37 @@ var moveBike = function(bike) {
                     }
                     if(bike.position.y == 10)
                     {
-                        if(bike.position.z >= -31 && bike.position.x >= -90 && bike.position.z <= -30 && bike.position.x <= -70)
+                        if(bike.position.z <= -130)
                         {
-                            if(bike.up > 2) 
+                            bike.limits = false;
+                        }
+                        else
+                        {
+                            if(bike.position.z >= -31 && bike.position.x >= -90 && bike.position.z <= -30 && bike.position.x <= -70)
                             {
-                                DownBikeonRamp1(bike, bike.rampAnim);
-                                bike.up = 0;
+                                if(bike.up > 2) 
+                                {
+                                    DownBikeonRamp1(bike, bike.rampAnim);
+                                    bike.up = 0;
+                                }
+                                else
+                                    bike.up++;
+                            }
+                            if(bike.position.z >= -30 && bike.position.x >= 70 && bike.position.z <= -29 && bike.position.x <= 90)
+                            {
+                                BikeonRamp2(bike, bike.rampAnim);
                             }
                             else
-                                bike.up++;
-                        }
-                        if(bike.position.z >= -30 && bike.position.x >= 70 && bike.position.z <= -29 && bike.position.x <= 90)
-                        {
-                            BikeonRamp2(bike, bike.rampAnim);
+                            {
+                                if(bike.position.x <= 69 && bike.position.x>= -69 && bike.position.z >= -31 && bike.position.z <= -30)
+                                {
+                                    JumptoFloor(bike, bike.jumpAnim);
+                                } 
+                            }
                         }
                     }
                     if(bike.position.y == 20)
                     {
-                        console.log(bike.position.y)
                         if(bike.position.z >= -11 && bike.position.x >= 70 && bike.position.z <= -10 && bike.position.x <= 90)
                         {
                             if(bike.up > 2) 
@@ -158,8 +170,8 @@ function deathBike(object, bike_position) {
                     { 
                         keys:[0, 1], 
                         values:[
-                            { y: 0.2, z: bike_position },
-                            { y: 0.2, z: bike_position}
+                            { y: object.position.y + 0.2, z: bike_position },
+                            { y: object.position.y + 0.2, z: bike_position}
                         ],
                         target:object.position
                     }
@@ -336,4 +348,27 @@ function DownBikeonRamp2(object, rampAnim){
         duration: rotateAnim_duration * 1000,
     });
     rampAnim.start();
+}
+
+function JumptoFloor(object, jumpAnim)
+{
+    jumpAnim.init({ 
+        interps:
+            [
+                { 
+                    keys:[0, 0.25, 0.5, 0.75, 1], 
+                    values:[
+                        { y: object.position.y - 2},
+                        { y: object.position.y - 4},
+                        { y: object.position.y - 6},
+                        { y: object.position.y - 8},
+                        { y: object.position.y - 10}
+                    ],
+                    target:object.position
+                }
+            ],
+        loop: false,
+        duration: rotateAnim_duration * 1000,
+    });
+    jumpAnim.start();
 }
