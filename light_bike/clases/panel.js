@@ -13,6 +13,7 @@ class Panel {
             newPlane.position.x = bikePosition.x;
             newPlane.position.y = bikePosition.y;
             newPlane.position.z = bikePosition.z;
+            arrPlaneCoords.push(newPlane.position);
             scene.add( newPlane );
         }
     }

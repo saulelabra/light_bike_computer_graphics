@@ -112,30 +112,34 @@ function rotateBike(object, direction, rotateAnim) {
 
 function deathBike(object, bike_position) {
     //rotateAnim = new KF.KeyFrameAnimator;
-    bikeDeath.init({ 
-        interps:
-            [
-                { 
-                    keys:[0, 1], 
-                    values:[
-                        { z:0},
-                        { z:Math.PI/2}
-                    ],
-                    target:object.rotation
-                },
-                { 
-                    keys:[0, 1], 
-                    values:[
-                        { y: 0.2, z: bike_position },
-                        { y: 0.2, z: bike_position}
-                    ],
-                    target:object.position
-                }
-            ],
-        loop: false,
-        duration: rotateAnim_duration * 1000,
-    });
-    bikeDeath.start();
+    if (deathAnim === false) {
+        bikeDeath.init({ 
+            interps:
+                [
+                    { 
+                        keys:[0, 1], 
+                        values:[
+                            { z:0},
+                            { z:Math.PI/2}
+                        ],
+                        target:object.rotation
+                    },
+                    { 
+                        keys:[0, 1], 
+                        values:[
+                            { y: 0.2, z: bike_position },
+                            { y: 0.2, z: bike_position}
+                        ],
+                        target:object.position
+                    }
+                ],
+            loop: false,
+            duration: rotateAnim_duration * 1000,
+        });
+        bikeDeath.start();
+        deathAnim = true;
+    }
+    
 }
 
 function BikeOffLimits(object, bike_position) {

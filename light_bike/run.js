@@ -7,7 +7,8 @@ function run() {
     KF.update();
     requestAnimationFrame( run );
 
-    planeCollision = greenPlane.isIntersectionBox(bluePlane);
+    checkCollision(tron_bike_blue);
+    checkCollision(tron_bike_green);
 
 //////////////////////////////////////Temporal///////////////////////////////////////////
     //controls.update();
@@ -40,5 +41,30 @@ function updateSize() {
         windowWidth = window.innerWidth;
         windowHeight = window.innerHeight;
         renderer.setSize( windowWidth, windowHeight );
+    }
+}
+
+function checkCollision(bike) {
+    var xMin;
+    var xMax;
+    var zMin;
+    var zMax;
+    for (var i=0;i<arrPlaneCoords.length - 10;i++) {
+        xMin = arrPlaneCoords[i].x - bikeSpeed;
+        xMax = arrPlaneCoords[i].x + bikeSpeed;
+        zMin = arrPlaneCoords[i].z - bikeSpeed;
+        zMax = arrPlaneCoords[i].z + bikeSpeed;
+        
+        if (bike.position.x < xMin && bike.position.x > xMax) {
+            if (bike.position.z < zMin && bike.position.z > zMax)
+            {
+                if (bike.position.y === arrPlaneCoords[i].y) {
+                    bike.death = true;
+                }
+                
+            }
+        }
+            
+        
     }
 }
