@@ -6,14 +6,12 @@ function run() {
     stats.update();
     KF.update();
     requestAnimationFrame( run );
-
     checkCollision(tron_bike_blue);
     checkCollision(tron_bike_green);
 
 //////////////////////////////////////Temporal///////////////////////////////////////////
     //controls.update();
 ////////////////////////////////////////////////////////////////////////////////////////puto commit
-
 }
 
 function render() {

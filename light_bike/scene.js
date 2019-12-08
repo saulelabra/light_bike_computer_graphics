@@ -1,4 +1,4 @@
-function createScene(canvas, container) {
+function createScene(container) {
     
     views = [
         {
@@ -12,7 +12,6 @@ function createScene(canvas, container) {
             fov: 30,
             updateCamera: function ( camera, scene ) {
               camera.position.y = 4;
-              //camera.lookAt( scene.position );
             }
         },
         {
@@ -26,22 +25,10 @@ function createScene(canvas, container) {
             fov: 30,
             updateCamera: function ( camera, scene ) {
                 camera.position.y = 4;
-              //camera.position.x += mouseX * 0.05;
-              //camera.position.x = Math.max( Math.min( camera.position.x, 2000 ), - 2000 );
-              //camera.lookAt( scene.position );
             }
         }
     ];
     scene = new THREE.Scene();
-    
-    /*for ( var ii = 0; ii < views.length; ++ ii ) {
-        var view = views[ ii ];
-        var camera = new THREE.PerspectiveCamera( view.fov, window.innerWidth / window.innerHeight, 1, 10000 );
-        camera.position.fromArray( view.eye );
-        camera.up.fromArray( view.up );
-        view.camera = camera;
-    }*/
-
 
     var view = null;
 
@@ -61,8 +48,8 @@ function createScene(canvas, container) {
     light.position.set( 0, 0, 1 );
     scene.add( light );
     // shadow
-    canvas.width = 128;
-    canvas.height = 128;
+    //canvas.width = 128;
+    //canvas.height = 128;
     renderer = new THREE.WebGLRenderer( { antialias: true } );
     renderer.setPixelRatio( window.devicePixelRatio );
     //renderer.setSize( window.innerWidth, window.innerHeight );
@@ -79,7 +66,6 @@ function createScene(canvas, container) {
     // Create a group to hold the objects
     group = new THREE.Object3D;
     root.add(group);
-    //root.add(bike_group);
     
     // Create planes and add it to the group
     planeMeshGroup = createPlanes();
@@ -98,12 +84,6 @@ function createScene(canvas, container) {
 
     // Now add the group to our scene
     scene.add( root );
-
-
-//////////////////////////////////////Temporal///////////////////////////////////////////
-    var controls = new THREE.OrbitControls( camera1, renderer.domElement );
-    controls.update();
-////////////////////////////////////////////////////////////////////////////////////////
 
     setStart();
 }

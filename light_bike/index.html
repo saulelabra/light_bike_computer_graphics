@@ -29,9 +29,9 @@
 			$(document).ready(
                 function() {
 					var canvas = document.getElementById("webglcanvas");
-					var container = document.getElementById("interface");
+					var container = document.getElementById("canvasContainer");
                     // create the scene
-                    createScene(canvas, container);
+                    createScene(container);
                     // Run the run loop
                     run();
                 }
@@ -43,6 +43,7 @@
 				position: absolute;
 				margin: 2%;
 				font-family: 'Righteous', cursive !important;
+				color:aliceblue;
 			}
 
 			#title {
@@ -63,8 +64,8 @@
 				<button onclick="stop();" type="button" class="btn btn-secondary pr mr-2">Pause</button>
 				<button onclick="restartButton();" type="button" class="btn btn-secondary">Restart</button>
 			</div>
-			<canvas id="webglcanvas" width=100% height=100% style="margin: 0;"%></canvas>
 		</div>
-		
+		<div id="canvasContainer">
+		</div>
     </body>
 </html>
