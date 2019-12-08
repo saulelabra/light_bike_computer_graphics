@@ -4,46 +4,49 @@ var moveBike = function(bike) {
         {
             deathBike(bike, bike.position.z)
         }
-        if(bike.limits == false)
-        {
-            BikeOffLimits(bike, bike.position.y)
-            //bike.death = true;
-        }
         else
         {
-            if(bike.death == false && bike.limits == true)
+            if(bike.limits == false)
             {
-                bike.translateZ(bikeSpeed);
-                panel = new Panel();
-                panel.createWall(bike, bike.position);
-                if(bike.position.y == 0)
+                BikeOffLimits(bike, bike.position.y)
+                bike.death = true;
+            }
+            else
+            {
+                if(bike.death == false && bike.limits == true)
                 {
-                    if(bike.position.z <= -100 || bike.position.z >= 100 || bike.position.x <= -100 || bike.position.x >=100)
+                    bike.translateZ(bikeSpeed);
+                    panel = new Panel();
+                    panel.createWall(bike, bike.position);
+                    if(bike.position.y == 0)
                     {
-                        bike.limits = false;
-                    }
-                    else
-                    {
-                        if(bike.position.z >= -11 && bike.position.x >= -90 && bike.position.z <= -10 && bike.position.x <= -70)
+                        if(bike.position.z <= -100 || bike.position.z >= 100 || bike.position.x <= -100 || bike.position.x >=100)
                         {
-                            BikeonRamp1(bike, bike.rampAnim);
-                        }
-                    }
-                }
-                if(bike.position.y == 10)
-                {
-                    if(bike.position.z >= -31 && bike.position.x >= -90 && bike.position.z <= -30 && bike.position.x <= -70)
-                    {
-                        if(bike.up > 2) 
-                        {
-                            DownBikeonRamp1(bike, bike.rampAnim);
-                            bike.up = 0;
+                            bike.limits = false;
                         }
                         else
-                            bike.up++;
+                        {
+                            if(bike.position.z >= -11 && bike.position.x >= -90 && bike.position.z <= -10 && bike.position.x <= -70)
+                            {
+                                BikeonRamp1(bike, bike.rampAnim);
+                            }
+                        }
                     }
+                    if(bike.position.y == 10)
+                    {
+                        if(bike.position.z >= -31 && bike.position.x >= -90 && bike.position.z <= -30 && bike.position.x <= -70)
+                        {
+                            if(bike.up > 2) 
+                            {
+                                DownBikeonRamp1(bike, bike.rampAnim);
+                                bike.up = 0;
+                            }
+                            else
+                                bike.up++;
+                        }
+                    }
+                    
                 }
-                
             }
         }
     }
