@@ -80,8 +80,6 @@ function createScene(container) {
 
     // Now add the group to our scene
     scene.add( root );
-
-    controller();
 }
 
 function createPlanes() {
