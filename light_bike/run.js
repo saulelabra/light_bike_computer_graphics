@@ -15,8 +15,6 @@ function run() {
             scene.remove(scene.getObjectByName( "plane", true ));
             scene.remove(scene.getObjectByName("tron_bike_blue", true));
             scene.remove(scene.getObjectByName("tron_bike_green", true));
-            roundOver = false;
-            
         }
     }
     

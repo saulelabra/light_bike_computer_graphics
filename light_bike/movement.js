@@ -1,5 +1,5 @@
 var moveBike = function(bike) {
-    if (bike != null) {
+    if (bike != null && roundOver == false) {
         if(bike.death == true)
         {
             deathBike(bike, bike.position.z);

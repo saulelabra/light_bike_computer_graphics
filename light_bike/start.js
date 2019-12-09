@@ -1,9 +1,12 @@
 
 var setStart = async function() {
     
-    document.addEventListener("keydown", onDocumentKeyDown, false);
-    var x = new Panel();
-    x.createWall();
+    if(roundOver == false) {
+        document.addEventListener("keydown", onDocumentKeyDown, false);
+        var x = new Panel();
+        x.createWall();
+    }
+    
     
 }
 
