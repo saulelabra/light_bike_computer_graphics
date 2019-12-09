@@ -61,3 +61,4 @@ var arrPlaneCoords = [];
 
 //Menu
 var pause = false;
+var game_over = false;

@@ -1,5 +1,6 @@
 function run() {
     requestAnimationFrame( run );
+
     if(pause == false) {
         render();
         moveBike(tron_bike_blue);
@@ -14,12 +15,6 @@ function run() {
         endRound();
         
     }
-    
-    
-
-//////////////////////////////////////Temporal///////////////////////////////////////////
-    //controls.update();
-////////////////////////////////////////////////////////////////////////////////////////puto commit
 }
 
 function render() {
@@ -85,8 +80,6 @@ function stop() {
 function endRound() {
     if (tron_bike_green.deathAnim == true || tron_bike_blue.deathAnim == true) {
         sleep(rotateAnim_duration * 1000).then(() => {
-            // Do something after the sleep!
-
             while(scene.getObjectByName( "plane" ) != undefined) {
                 scene.remove(scene.getObjectByName( "plane" ));
             } 

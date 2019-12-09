@@ -34,7 +34,7 @@
                     // create the scene
                     createScene(container);
                     // Run the run loop
-                    //run();
+					run();
                 }
 			);
         </script>
@@ -50,23 +50,32 @@
 			#title {
 				font-style: normal;
 			}
+
+			#gameOver {
+				background-color: rgba(0,0,0,0.3);
+				position: absolute;
+				height: 100%;
+				width: 100%;
+				padding: 80%;
+			}
 		</style>
     </head>
     <body>
+			<div id="gameOver">
+					<h1>Game Over</h1>
+				</div>
         <div id="interface">
 			<h1 class="title">Light Bike</h1>
 			<br>
-			<h5>Score: <span id ="score">0</span></h5>
-			<h5>High Score: <span id ="high_score">0</span></h5>
-			<h5>Time left: <span id ="time_left">0</span></h5>
+			<h5>Green Lives: <span id ="green_lives">0</span></h5>
+			<h5>Blue Lives: <span id ="blue_lives">0</span></h5>
 			<br>
 			<div class="d-flex flex-row">
-				<button id="start_id" onclick="run()" type="button" class="btn btn-secondary pr mr-2">Start</button>
+				<button onclick="setStart()" type="button" class="btn btn-secondary pr mr-2">Start</button>
 				<button onclick="stop()" type="button" class="btn btn-secondary pr mr-2">Pause</button>
 				<button onclick="setStart()" type="button" class="btn btn-secondary">Restart</button>
 			</div>
 		</div>
-		<div id="canvasContainer">
-		</div>
+		<div id="canvasContainer"></div>
     </body>
 </html>

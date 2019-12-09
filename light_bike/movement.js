@@ -1,8 +1,22 @@
 var moveBike = function(bike) {
+
+    if(game_over)
+    {
+        
+    }
+
+    if(bike.color == 0)
+    {
+        document.getElementById("green_lives").innerHTML = bike.rounds;
+    }else{
+        document.getElementById("blue_lives").innerHTML = bike.rounds;
+    }
+
     if (bike != null && roundOver == false) {
         if(bike.death == true)
         {
             bike.rounds -= 1;
+
             deathBike(bike, bike.position.z);
             bike.death = false;
         }
