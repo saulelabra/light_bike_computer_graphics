@@ -14,6 +14,7 @@ class Panel {
             newPlane.position.y = bikePosition.y;
             newPlane.position.z = bikePosition.z;
             arrPlaneCoords.push(newPlane.position);
+            newPlane.name = "plane";
             scene.add( newPlane );
         }
     }

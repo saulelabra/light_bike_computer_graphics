@@ -204,7 +204,7 @@ function deathBike(object, bike_position) {
         bikeDeath.start();
         object.deathAnim = true;
     }
-    
+    roundOver = true;
 }
 
 function BikeOffLimits(object, bike_position) {
@@ -282,6 +282,7 @@ function BikeOffLimits(object, bike_position) {
         duration: rotateAnim_duration * 1000,
     });
     bikeOffLimits.start();
+    roundOver = true;
 }
 
 function BikeonRamp1(object, rampAnim){

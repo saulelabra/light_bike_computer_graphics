@@ -54,6 +54,7 @@ var bikeDeath = new KF.KeyFrameAnimator;
 var bikeOffLimits = new KF.KeyFrameAnimator;
 var count = 0;
 var prev_pos = 0;
+var roundOver = false;
 
 //Colliders
 var arrPlaneCoords = [];
