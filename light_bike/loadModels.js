@@ -23,6 +23,7 @@ async function loadGreenBikeMTL() {
             camera2.position.z += 10;
             tron_bike_green.position.x = -10;
             tron_bike_green.name = "tron_bike_green";
+            tron_bike_green.rounds = 3;
             
             //scene.add( tron_bike_green );
         });
@@ -53,6 +54,7 @@ async function loadBlueBikeMTL() {
             camera1.position.z += 10;
             tron_bike_blue.position.x = 10;
             tron_bike_blue.name = "tron_bike_blue";
+            tron_bike_blue.rounds = 3;
             
             //scene.add( tron_bike_blue );
         });

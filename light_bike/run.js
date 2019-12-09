@@ -10,6 +10,7 @@ function run() {
         
         checkCollision(tron_bike_blue);
         checkCollision(tron_bike_green);
+        console.log(tron_bike_green.rounds);
         endRound();
         
     }

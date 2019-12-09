@@ -2,6 +2,7 @@ var moveBike = function(bike) {
     if (bike != null && roundOver == false) {
         if(bike.death == true)
         {
+            bike.rounds -= 1;
             deathBike(bike, bike.position.z);
             bike.position.x = bike.initialPosition;
             bike.position.y = 0;
@@ -15,6 +16,7 @@ var moveBike = function(bike) {
         {
             if(bike.limits == false)
             {
+                bike.rounds -= 1;
                 BikeOffLimits(bike, bike.position.y)
                 bike.death = true;
             }
