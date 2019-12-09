@@ -177,7 +177,7 @@ function rotateBike(object, direction, rotateAnim) {
 
 function deathBike(object, bike_position) {
     //rotateAnim = new KF.KeyFrameAnimator;
-    if (object.deathAnim === false) {
+    if (object.deathAnim == false) {
         bikeDeath.init({ 
             interps:
                 [

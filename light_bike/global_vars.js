@@ -22,6 +22,8 @@ var planeMeshGroup = null;
 var light_bike_url = "../models/Light_Cycle/HQ_Movie\ cycle.mtl";
 var tron_bike_blue = null;
 var tron_bike_green = null;
+var tron_bike_green_new = null;
+var tron_bike_blue_new = null;
 
 //Camera
 var mouseX = 0, mouseY = 0;
