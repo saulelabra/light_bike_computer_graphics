@@ -283,6 +283,8 @@ function BikeOffLimits(object, bike_position) {
     });
     bikeOffLimits.start();
     roundOver = true;
+    object.deathAnim = true;
+
 }
 
 function BikeonRamp1(object, rampAnim){
