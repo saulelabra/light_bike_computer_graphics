@@ -5,14 +5,15 @@ var moveBike = function(bike) {
         
     }
 
-    if(bike.color == 0)
-    {
-        document.getElementById("green_lives").innerHTML = bike.rounds;
-    }else{
-        document.getElementById("blue_lives").innerHTML = bike.rounds;
-    }
+    
 
     if (bike != null && roundOver == false) {
+        if(bike.color == 0)
+        {
+            document.getElementById("green_lives").innerHTML = bike.rounds;
+        }else{
+            document.getElementById("blue_lives").innerHTML = bike.rounds;
+        }
         if(bike.death == true)
         {
             bike.rounds -= 1;

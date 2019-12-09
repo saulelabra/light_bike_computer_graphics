@@ -11,10 +11,10 @@ function run() {
         
         checkCollision(tron_bike_blue);
         checkCollision(tron_bike_green);
-        console.log(tron_bike_green.rounds);
         endRound();
         
     }
+    
 }
 
 function render() {
@@ -78,12 +78,14 @@ function stop() {
 }
 
 function endRound() {
-    if (tron_bike_green.deathAnim == true || tron_bike_blue.deathAnim == true) {
-        sleep(rotateAnim_duration * 1000).then(() => {
-            while(scene.getObjectByName( "plane" ) != undefined) {
-                scene.remove(scene.getObjectByName( "plane" ));
-            } 
-        });
+    if (tron_bike_green != undefined && tron_bike_blue != undefined) {
+        if (tron_bike_green.deathAnim == true || tron_bike_blue.deathAnim == true) {
+            sleep(rotateAnim_duration * 1000).then(() => {
+                while(scene.getObjectByName( "plane" ) != undefined) {
+                    scene.remove(scene.getObjectByName( "plane" ));
+                } 
+            });
+        }
     }
 }
 
