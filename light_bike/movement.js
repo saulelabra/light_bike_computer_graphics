@@ -2,7 +2,14 @@ var moveBike = function(bike) {
     if (bike != null) {
         if(bike.death == true)
         {
-            deathBike(bike, bike.position.z)
+            deathBike(bike, bike.position.z);
+            bike.position.x = bike.initialPosition;
+            bike.position.y = 0;
+            bike.position.z = 0;
+            bike.rotation.x = 0;
+            bike.rotation.y = 0;
+            bike.rotation.z = 0;
+            bike.death = false;
         }
         else
         {

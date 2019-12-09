@@ -42,10 +42,12 @@ var trail_width = 0.5;
 var geometry = new THREE.BoxGeometry( trail_width, 1.5, trail_width);
 var material = new THREE.MeshBasicMaterial( {color: "#00FC0F", side: THREE.DoubleSide, opacity: 0.5, transparent:true} );
 var planeGreen = new THREE.Mesh( geometry, material );
+var planeGreenArr = [];
 
 //Trail2 blue
 var material2 = new THREE.MeshBasicMaterial( {color: "#23F9EC", side: THREE.DoubleSide, opacity: 0.5, transparent:true} );
 var planeBlue = new THREE.Mesh( geometry, material2 );
+var planeBlueArr = [];
 
 //Death animation
 var bikeDeath = new KF.KeyFrameAnimator;

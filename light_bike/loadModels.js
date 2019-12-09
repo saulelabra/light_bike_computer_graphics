@@ -18,7 +18,8 @@ async function loadGreenBikeMTL() {
             tron_bike_green.jumpAnim = new KF.KeyFrameAnimator;
             tron_bike_green.up = 0;
             tron_bike_green.color = 0;
-            tron_bike_green.position.x +=10; 
+            tron_bike_green.position.x += 10;
+            tron_bike_green.initialPosition = -10;
             camera2.position.z += 10;
             tron_bike_green.position.x = -10;
             
@@ -46,6 +47,7 @@ async function loadBlueBikeMTL() {
             tron_bike_blue.jumpAnim = new KF.KeyFrameAnimator;
             tron_bike_blue.up = 0;
             tron_bike_blue.color = 1;
+            tron_bike_blue.initialPosition = 10;
 
             camera1.position.z += 10;
             tron_bike_blue.position.x = 10;
