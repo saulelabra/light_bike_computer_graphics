@@ -4,12 +4,6 @@ var moveBike = function(bike) {
         {
             bike.rounds -= 1;
             deathBike(bike, bike.position.z);
-            bike.position.x = bike.initialPosition;
-            bike.position.y = 0;
-            bike.position.z = 0;
-            bike.rotation.x = 0;
-            bike.rotation.y = 0;
-            bike.rotation.z = 0;
             bike.death = false;
         }
         else
