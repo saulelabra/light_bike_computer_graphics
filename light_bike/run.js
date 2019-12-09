@@ -11,10 +11,13 @@ function run() {
         checkCollision(tron_bike_blue);
         checkCollision(tron_bike_green);
         if (roundOver) {
-            console.log(tron_bike_green);
-            scene.remove(scene.getObjectByName( "plane", true ));
-            scene.remove(scene.getObjectByName("tron_bike_blue", true));
-            scene.remove(scene.getObjectByName("tron_bike_green", true));
+            scene.remove(scene.getObjectByName("tron_bike_blue"));
+            scene.remove(scene.getObjectByName("tron_bike_green"));
+            while(scene.getObjectByName( "plane" ) != undefined) {
+                scene.remove(scene.getObjectByName( "plane" ));
+            }       
+            
+            //roundOver = false;
         }
     }
     
