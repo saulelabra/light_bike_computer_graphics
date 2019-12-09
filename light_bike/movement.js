@@ -91,6 +91,21 @@ var moveBike = function(bike) {
                                 bike.up++;
 
                         }
+                        else
+                            {
+                                if(bike.position.x <= 10 || bike.position.x>= 90 || bike.position.z >= 90)
+                                {
+                                    JumptoFloor2(bike, bike.jumpAnim);
+                                } 
+                                else
+                                {
+                                    if(bike.position.z >= -11 && bike.position.x <= 69 && bike.position.z <= -10)
+                                    {
+                                        JumptoFloor2(bike, bike.jumpAnim);
+                                    }
+
+                                }
+                            }
                     }
                     
                 }
@@ -378,4 +393,27 @@ function JumptoFloor(object, jumpAnim)
         duration: rotateAnim_duration * 1000,
     });
     jumpAnim.start();
+}
+
+function JumptoFloor2(object, jumpAnim)
+{
+    jumpAnim.init({ 
+        interps:
+            [
+                { 
+                    keys:[0, 0.25, 0.5, 0.75, 1], 
+                    values:[
+                        { y: object.position.y - 4},
+                        { y: object.position.y - 8},
+                        { y: object.position.y - 12},
+                        { y: object.position.y -16},
+                        { y: object.position.y - 20}
+                    ],
+                    target:object.position
+                }
+            ],
+        loop: false,
+        duration: rotateAnim_duration * 1000,
+    });
+    jumpAnim.start(); 
 }
