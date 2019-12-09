@@ -16,7 +16,6 @@ function run() {
             while(scene.getObjectByName( "plane" ) != undefined) {
                 scene.remove(scene.getObjectByName( "plane" ));
             }       
-            
             //roundOver = false;
         }
     }
