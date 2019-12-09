@@ -11,7 +11,7 @@ var moveBike = function(bike) {
             if(bike.limits == false)
             {
                 bike.rounds -= 1;
-                BikeOffLimits(bike, bike.position.y)
+                //BikeOffLimits(bike, bike.position.y)
                 bike.death = true;
             }
             else
@@ -21,6 +21,7 @@ var moveBike = function(bike) {
                     bike.translateZ(bikeSpeed);
                     panel = new Panel();
                     panel.createWall(bike, bike.position);
+
                     if(bike.position.y == 0)
                     {
                         if(bike.position.z <= -100 || bike.position.z >= 100 || bike.position.x <= -100 || bike.position.x >=100)
