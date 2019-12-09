@@ -10,16 +10,8 @@ function run() {
         
         checkCollision(tron_bike_blue);
         checkCollision(tron_bike_green);
-        if (tron_bike_green.deathAnim == true || tron_bike_blue.deathAnim == true) {
-            sleep(rotateAnim_duration * 1000).then(() => {
-                // Do something after the sleep!
-                scene.remove(scene.getObjectByName("tron_bike_blue"));
-                scene.remove(scene.getObjectByName("tron_bike_green"));
-                while(scene.getObjectByName( "plane" ) != undefined) {
-                    scene.remove(scene.getObjectByName( "plane" ));
-                }    
-            });
-        }
+        endRound();
+        
     }
     
     
@@ -90,6 +82,19 @@ function stop() {
     }       
 }
 
+function endRound() {
+    if (tron_bike_green.deathAnim == true || tron_bike_blue.deathAnim == true) {
+        sleep(rotateAnim_duration * 1000).then(() => {
+            // Do something after the sleep!
+            scene.remove(scene.getObjectByName("tron_bike_blue"));
+            scene.remove(scene.getObjectByName("tron_bike_green"));
+            while(scene.getObjectByName( "plane" ) != undefined) {
+                scene.remove(scene.getObjectByName( "plane" ));
+            }    
+        });
+    }
+}
+
 function sleep (time) {
     return new Promise((resolve) => setTimeout(resolve, time));
-  }
+}
