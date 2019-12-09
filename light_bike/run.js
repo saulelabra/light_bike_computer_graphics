@@ -87,7 +87,3 @@ function stop() {
         pause = false;
     }       
 }
-
-function restartButton() {
-    
-}
