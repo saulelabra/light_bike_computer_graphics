@@ -1,6 +1,5 @@
 function setStart() {
     document.getElementById("gameOver").style.visibility = "hidden";
-    document.getElementById("next_round").style.visibility = "hidden";
 
     arrPlaneCoords = [];
     roundOver = false;
