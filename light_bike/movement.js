@@ -1,12 +1,5 @@
 var moveBike = function(bike) {
 
-    if(bike.rounds <= 2)
-    {
-        document.getElementById("window").style.visibility = "visible";
-    }
-
-    
-
     if (bike != null && roundOver == false) {
         if(bike.color == 0)
         {

@@ -11,6 +11,9 @@ function run() {
         
         checkCollision(tron_bike_blue);
         checkCollision(tron_bike_green);
+
+        checkGameOver();
+
         endRound();
         
     }
@@ -72,8 +75,10 @@ function checkCollision(bike) {
 function stop() {
     if(pause == false) {
         pause = true;
+        document.getElementById("pause").style.backgroundColor = "rgb(255, 0, 0)";
     }else{
         pause = false;
+        document.getElementById("pause").style.backgroundColor = "#6c757d";
     }       
 }
 
@@ -83,9 +88,19 @@ function endRound() {
             sleep(rotateAnim_duration * 1000).then(() => {
                 while(scene.getObjectByName( "plane" ) != undefined) {
                     scene.remove(scene.getObjectByName( "plane" ));
-                } 
+                }
+
+                //document.getElementById("next_round").style.visibility("visible");
             });
         }
+    }
+}
+
+function checkGameOver() {
+    if(tron_bike_green.rounds <= 0 || tron_bike_blue.rounds <= 0)
+    {
+        document.getElementById("gameOver").style.visibility = "visible";
+        document.getElementById("next_round").style.visibility = "hidden";
     }
 }
 

@@ -63,7 +63,7 @@
 			#gameOver {
 				font-family: 'Righteous', cursive !important;
 				color:aliceblue;
-				background-color: rgba(255,255,255,0.3);
+				background-color: rgba(200, 0, 0 ,0.7);
 				padding: 10% 15%;
 				visibility: hidden;
 			}
@@ -82,9 +82,9 @@
 			<h5>Blue Lives: <span id ="blue_lives">0</span></h5>
 			<br>
 			<div class="d-flex flex-row">
-				<button onclick="setStart()" type="button" class="btn btn-secondary pr mr-2">Start</button>
-				<button onclick="stop()" type="button" class="btn btn-secondary pr mr-2">Pause</button>
-				<button onclick="setStart()" type="button" class="btn btn-secondary">Restart</button>
+				<button onclick="setNewStart()" type="button" class="btn btn-secondary pr mr-2">Start</button>
+				<button id="pause" onclick="stop()" type="button" class="btn btn-secondary pr mr-2">Pause</button>
+				<button id="next_round" onclick="setStart()" type="button" class="btn btn-secondary">Next Round</button>
 			</div>
 		</div>
 		<div id="canvasContainer"></div>

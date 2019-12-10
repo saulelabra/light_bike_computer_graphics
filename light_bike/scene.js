@@ -92,8 +92,8 @@ function createScene(container) {
 
     var loader = new THREE.AudioLoader();
 
-    // load a resource
-    /*loader.load(
+    // load a resource (music)
+    loader.load(
         // resource URL
         '../music.mp3',
     
@@ -115,7 +115,7 @@ function createScene(container) {
         function ( err ) {
             console.log( 'An error happened' );
         }
-    );*/
+    );
 
     // Now add the group to our scene
     scene.add( root );
