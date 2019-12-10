@@ -1,8 +1,8 @@
 var moveBike = function(bike) {
 
-    if(game_over)
+    if(bike.rounds <= 2)
     {
-        
+        document.getElementById("window").style.visibility = "visible";
     }
 
     if(bike.color == 0)

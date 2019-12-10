@@ -51,19 +51,30 @@
 				font-style: normal;
 			}
 
-			#gameOver {
-				background-color: rgba(0,0,0,0.3);
+			#window {
 				position: absolute;
-				height: 100%;
 				width: 100%;
-				padding: 80%;
+				height: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			#gameOver {
+				font-family: 'Righteous', cursive !important;
+				color:aliceblue;
+				background-color: rgba(255,255,255,0.3);
+				padding: 10% 15%;
+				visibility: hidden;
 			}
 		</style>
     </head>
     <body>
+		<div id="window">
 			<div id="gameOver">
-					<h1>Game Over</h1>
-				</div>
+				<h1>Game Over</h1>
+			</div>
+		</div>
         <div id="interface">
 			<h1 class="title">Light Bike</h1>
 			<br>
